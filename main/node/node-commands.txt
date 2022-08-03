@@ -1,0 +1,15 @@
+//initialize set everything default
+npm init -y
+
+//local dependencies
+npm i bootstrap
+
+//dev dependencies
+npm i nodemon -D
+
+
+//changes in the script
+"scripts": {
+    "start": "node app.js", //npm start
+    "dev": "nodemon app.js" //npm run dev, file watch
+  }
