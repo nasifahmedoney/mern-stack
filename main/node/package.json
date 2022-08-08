@@ -4,7 +4,7 @@
   "description": "",
   "main": "1_globals.js",
   "scripts": {
-    "start": "node ./async-await/1_readFile.js",
+    "start": "node ./async-await/2_readWritefile.js",
     "dev": "nodemon app.js"
   },
   "keywords": [],

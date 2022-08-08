@@ -1,2 +1,1 @@
-Write this in the file this is the first text file 
- this is the second text file
+this will be written in this file this is the first text file
