@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon ./final/1-express-basics.js"
   },
   "keywords": [],
   "author": "",
