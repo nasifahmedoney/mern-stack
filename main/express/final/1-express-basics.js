@@ -13,7 +13,7 @@ app.get('/about',(req,res)=>{
 app.get('/contact',(req,res)=>{
     res.send('<h3>contact page</h3>');
 })
-
+ 
 app.get('*',(req,res)=>{
     res.send('about page');
 })
@@ -28,3 +28,8 @@ app.listen(5000);
 //app.all
 //app.use
 //app.listen
+
+/*
+console.log(__dirname);
+output: C:\mern-stack\main\express\final 
+ */

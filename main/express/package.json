@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./final/1-express-basics.js"
+    "start": "nodemon ./final/2-navbar.js"
   },
   "keywords": [],
   "author": "",
