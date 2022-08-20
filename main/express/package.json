@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./final/3-json.js"
+    "start": "nodemon ./final/4-query-string.js"
   },
   "keywords": [],
   "author": "",
