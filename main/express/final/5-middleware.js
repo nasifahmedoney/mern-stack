@@ -1,22 +1,29 @@
 const express = require('express');
 const app = express();
-const logger =  require('./logger.js');
+const logger =  require('./logger');
+const authorize = require('./authorize')
 
 // middleware functionality
 // request => middleware => response
 
 
-//using app.use(logger), executes sequentially, i.e. using
-//app.use(logger) after '/' will onlly work on urls after '/'
-//using app.use('/api',logger) will only work on urls with '/api' and '/api/anything-comes-after-api'
-app.use(logger)
+//multiple middleware function, sequential
+app.use([logger,authorize])
 
 app.get('/',(req,res)=>{
+    console.log(req.queryUser)
     res.send('Home page')
 })
 
 app.get('/about',(req,res)=>{
     res.send('About page')
+})
+
+app.get('/api/items',(req,res)=>{
+    res.send('Items')
+})
+app.get('/api/products',(req,res)=>{
+    res.send('Products')
 })
 app.listen(5000,()=>{
     console.log('server is listening on port 5000...');
