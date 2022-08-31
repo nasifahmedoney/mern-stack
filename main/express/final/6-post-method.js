@@ -49,6 +49,19 @@ app.put('/api/people/:id',(req,res)=>{
     res.status(200).json({success:true, data:newPeople});
 })
 
+//delete method
+app.delete('/api/people/:id',(req,res)=>{
+    const person = people.find((person)=>person.id===Number(req.params.id))
+
+    if(!person){
+       return res.status(404).json({success:false,msg:`${req.params.id} not found`})
+    }
+
+    const newPeople = people.filter((user)=>user.id !== Number(req.params.id))
+
+    return res.status(200).json({success:true,data:newPeople})
+}) 
+
 app.listen(5000,()=>{
     console.log('server is listening on post 5000...')
 });
