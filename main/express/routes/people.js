@@ -8,10 +8,13 @@ const {
     deletePeople
 } = require('../controller/people')
 
-router.get('/',getPeople)
-router.post('/',postPeople)
+//router.get('/',getPeople)
+//router.post('/',postPeople)
+//alternative
+router.route('/').get(getPeople).post(postPeople);
 router.put('/:id',putPeople)
 router.delete('/:id',deletePeople) 
+
 
 
 
