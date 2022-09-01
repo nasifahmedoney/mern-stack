@@ -1,27 +1,12 @@
-const express = require('express');
+const express = require('express')
+const router = express.Router();
 const {people} = require('../data');
-const path = require('path')
 
-const app = express();
-
-app.use(express.static(path.join(__dirname,'./methods-public')));
-
-//parse form data
-app.use(express.urlencoded({extended:false}));
-//parse json for incoming requests
-app.use(express.json());
-
-app.post('/login',(req,res)=>{
-    const {name} = req.body;
-    res.send(`Hi ${name}`);
-    console.log(req.body);
-})
-
-app.get('/api/people',(req,res)=>{
+router.get('/',(req,res)=>{
     res.status(200).json({success:true, data: people})
 })
 
-app.post('/api/people',(req,res)=>{
+router.post('/',(req,res)=>{
     const {name} = req.body;
     if(!name){
         return res.status(400).json({success: false, msg:'name value empty'})
@@ -30,9 +15,9 @@ app.post('/api/people',(req,res)=>{
 })
 
 //put requests, single entry update
-app.put('/api/people/:id',(req,res)=>{
+router.put('/:id',(req,res)=>{
     const {id} = req.params;
-    const {name} = req.body;
+    const {name} = req.body;//parse form data
     /* name sent as json
     {
         "name": "user"
@@ -55,7 +40,7 @@ app.put('/api/people/:id',(req,res)=>{
 })
 
 //delete method
-app.delete('/api/people/:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     const person = people.find((person)=>person.id===Number(req.params.id))
 
     if(!person){
@@ -67,6 +52,4 @@ app.delete('/api/people/:id',(req,res)=>{
     return res.status(200).json({success:true,data:newPeople})
 }) 
 
-app.listen(5000,()=>{
-    console.log('server is listening on post 5000...')
-});
+module.exports = router;

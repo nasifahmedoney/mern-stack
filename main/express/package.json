@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./final/6-post-method.js"
+    "start": "nodemon ./final/routes-and-controller.js"
   },
   "keywords": [],
   "author": "",
