@@ -26,13 +26,18 @@ app.post('/api/people',(req,res)=>{
     if(!name){
         return res.status(400).json({success: false, msg:'name value empty'})
     }
-    res.status(201).json({success: true, person: name})
+    res.status(201).json({success: true, person: [...people,name]})
 })
 
 //put requests, single entry update
 app.put('/api/people/:id',(req,res)=>{
     const {id} = req.params;
     const {name} = req.body;
+    /* name sent as json
+    {
+        "name": "user"
+    }
+     */
 
     const person = people.find((person)=>person.id===Number(id))
 
