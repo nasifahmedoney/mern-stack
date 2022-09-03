@@ -5,11 +5,12 @@ const getPeople = (req,res)=>{
 }
 
 const postPeople = (req,res)=>{
-    const {name} = req.body;
+    const {name,id} = req.body;
     if(!name){
         return res.status(400).json({success: false, msg:'name value empty'})
     }
-    res.status(201).json({success: true, person: [...people,name]})
+    
+    res.status(201).json({success: true, person: [...people,{id,name}]})
 }
 
 const putPeople = (req,res)=>{
