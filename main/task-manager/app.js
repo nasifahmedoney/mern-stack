@@ -4,6 +4,9 @@ const connectDB = require('./db/connection');
 const tasks = require('./routes/tasks');
 require('dotenv').config();
 
+
+//middleware
+app.use(express.static('./public'))//loads localhost:3000/ with static files in public folder
 app.use(express.json())
 app.use('/api/v1/tasks',tasks);
 

@@ -2,8 +2,8 @@ const task = require('../models/DbSchema')
 
 const getAllItems = async (req,res)=>{
     try {
-        const allitmes = await task.find({}) 
-        res.status(201).json({allitmes})
+        const tasks = await task.find({}) 
+        res.status(201).json({tasks})
     } catch (error) {
         res.status(500).json(error)
     }
@@ -35,8 +35,20 @@ const getTask = async (req,res)=>{
     }
     
 }
-const updateTask = (req,res)=>{
-    res.send('update task');
+const updateTask = async (req,res)=>{
+    try {
+        const taskID = req.params.id
+        const updateTask = await task.findOneAndUpdate({_id:taskID},req.body,{
+            new:true,
+            runValidators:true
+        })
+        if(!updateTask){
+            return res.status(404).json({msg:`no task with id: ${taskID}`})
+        }
+        res.status(200).json({updateTask})
+    } catch (error) {
+        res.status(500).json({msg:error})
+    }
 }
 const deleteTask = async (req,res)=>{
     try {
