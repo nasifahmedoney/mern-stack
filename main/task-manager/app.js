@@ -3,6 +3,7 @@ const app = express();
 const connectDB = require('./db/connection');
 const tasks = require('./routes/tasks');
 require('dotenv').config();
+const notFound = require('./middleware/not-found');
 
 
 //middleware
@@ -10,6 +11,7 @@ app.use(express.static('./public'))//loads localhost:3000/ with static files in 
 app.use(express.json())
 app.use('/api/v1/tasks',tasks);
 
+app.use(notFound);
 
 const port = 3000;
 
