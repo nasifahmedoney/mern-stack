@@ -4,14 +4,14 @@ const connectDB = require('./db/connection');
 const tasks = require('./routes/tasks');
 require('dotenv').config();
 const notFound = require('./middleware/not-found');
-
+const customError = require('./middleware/custom-errors');
 
 //middleware
 app.use(express.static('./public'))//loads localhost:3000/ with static files in public folder
-app.use(express.json())
-app.use('/api/v1/tasks',tasks);
-
-app.use(notFound);
+app.use(express.json())//json parse
+app.use('/api/v1/tasks',tasks);//routes
+app.use(notFound);//invalid routes, if routes are okay goto asyncWrapper middlware in controller,on error, next(error) redirects to the next middlware customError
+app.use(customError);
 
 const port = 3000;
 
