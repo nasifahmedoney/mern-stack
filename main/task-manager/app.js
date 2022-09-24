@@ -13,7 +13,8 @@ app.use('/api/v1/tasks',tasks);//routes
 app.use(notFound);//invalid routes, if routes are okay goto asyncWrapper middlware in controller,on error, next(error) redirects to the next middlware customError
 app.use(customError);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
+// set port .env file, add PORT=6000
 
 const start = async () =>{
     try{
